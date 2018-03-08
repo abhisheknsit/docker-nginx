@@ -2,7 +2,6 @@ server {
   listen 8080;
 
   root /var/www/html;
-
   # Doesn't broadcast version level of server software
   server_tokens off;
 
@@ -13,7 +12,7 @@ server {
   client_max_body_size 1m;
 
   location / {
-    try_files $uri $uri/ =404;
+    return 200 '{"content_length": "$content_length"}';
   }
 
   # Protect against accessing hidden files
